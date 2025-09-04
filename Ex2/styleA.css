@@ -1,0 +1,33 @@
+div.style {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+div.style span:nth-last-child(even) {
+    background-color: rgb(234, 233, 233);
+}
+
+div.style span {
+    font-family: Tahoma;
+    border-top: #687291;
+    border-top-width: 1px;
+    border-top-style: solid;
+    background-color: #eeeff2;
+    height: 100px;
+    width: 100px;
+    font-size: 40px;
+    text-align: center;
+    margin-bottom: 5px;
+}
+
+div.style span:last-child {
+    border-color: black;
+    border-width: 5px;
+    border-style: solid;
+    background-color: #687291;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
