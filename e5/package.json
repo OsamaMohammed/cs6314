@@ -1,0 +1,20 @@
+{
+  "name": "exercise5",
+  "version": "1.0.0",
+  "private": true,
+  "description": "exercise5 - JavaScript and the DOM",
+  "devDependencies": {
+    "eslint": "^8.6.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-plugin-html": "^6.2.0"
+  },
+  "scripts": {
+    "test": "echo \"Test your code by opening datepicker.html in your browser.\"",
+    "lint": "eslint -c .eslintrc.json --ext .js ."
+  },
+  "author": "Mendel Rosenblum <mendel@cs.stanford.edu> (http://www.stanford.edu/~mendel)",
+  "license": "ISC",
+  "dependencies": {
+    "8.5": "^2.0.0"
+  }
+}

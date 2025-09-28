@@ -1,0 +1,37 @@
+{
+    "env": {
+        "browser": true,
+        "es2021": true
+    },
+    "extends": "airbnb-base",
+    "plugins": [
+        "html"
+    ],
+    "globals": {
+        "DatePicker": "readonly"
+    },
+    "parserOptions": {
+        "ecmaVersion": "latest",
+        "sourceType": "script"
+    },
+    "rules": {
+        "indent": [
+            "error",
+            4
+        ],
+        "strict": [
+            "error",
+            "global"
+        ],
+        "no-console": "off",
+        "class-methods-use-this": "off",
+        "no-new": "off",
+        "linebreak-style": 0,
+        "no-unused-vars": [
+            "error",
+            {
+                "varsIgnorePattern": "^DatePicker$"
+            }
+        ]
+    }
+}
