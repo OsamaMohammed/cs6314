@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html data-internal-note="use-green-accent-left-border-system-font" style="--x-internal:use-green-accent-left-border-system-font;"><link type="text/css" id="dark-mode" rel="stylesheet" href=""><style type="text/css" id="dark-mode-custom-style"></style><head>
+<meta http-equiv="content-type" content="text/html; charset=windows-1252">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>E7: Movie Search App using React</title>
+  <meta name="description" content="WPL">
+  <meta name="x-internal-note" content="Use green as the accent color, apply class left-border to section headings, and use the body font stack -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif.">
+  <style data-tippy-stylesheet="">.tippy-tooltip[data-animation=fade][data-state=hidden]{opacity:0}.tippy-iOS{cursor:pointer!important;-webkit-tap-highlight-color:transparent}.tippy-popper{pointer-events:none;max-width:calc(100vw - 10px);transition-timing-function:cubic-bezier(.165,.84,.44,1);transition-property:transform}.tippy-tooltip{position:relative;color:#fff;border-radius:4px;font-size:14px;line-height:1.4;background-color:#333;transition-property:visibility,opacity,transform;outline:0}.tippy-tooltip[data-placement^=top]>.tippy-arrow{border-width:8px 8px 0;border-top-color:#333;margin:0 3px;transform-origin:50% 0;bottom:-7px}.tippy-tooltip[data-placement^=bottom]>.tippy-arrow{border-width:0 8px 8px;border-bottom-color:#333;margin:0 3px;transform-origin:50% 7px;top:-7px}.tippy-tooltip[data-placement^=left]>.tippy-arrow{border-width:8px 0 8px 8px;border-left-color:#333;margin:3px 0;transform-origin:0 50%;right:-7px}.tippy-tooltip[data-placement^=right]>.tippy-arrow{border-width:8px 8px 8px 0;border-right-color:#333;margin:3px 0;transform-origin:7px 50%;left:-7px}.tippy-tooltip[data-interactive][data-state=visible]{pointer-events:auto}.tippy-tooltip[data-inertia][data-state=visible]{transition-timing-function:cubic-bezier(.54,1.5,.38,1.11)}.tippy-arrow{position:absolute;border-color:transparent;border-style:solid}.tippy-content{padding:5px 9px}</style><link rel="stylesheet" href="E7_%20Movie%20Search%20App%20using%20React_files/e7.css"></head>
+<body>
+<section id="course-info">
+  <h1>Exercise 7: Movie Search App using React</h1>
+  <p><b>Due Date:</b> Thursday Oct 16, 2025 11:59 PM</p>
+</section>
+<div class="container">
+  <main>
+    <section>
+      <h3 class="left-border">Objective</h3>
+      <p>Re-build the Movie Search App using React. The app should let 
+users search for movies using an API and maintain a persistent watchlist
+ using localStorage. You will use props, useState, useEffect, and React 
+Router.</p>
+    </section>
+    <section>
+      <h3 class="left-border">Requirements (40 points)</h3>
+      <p>The high level requirements are the same as in Exercise 6. There is no starter code. 
+        Build the project using Vite as demonstrated in the class. 
+        See below for the list of components you need to build.
+      </p>
+      <ul>
+        <li>App - defines the routes for your pages.</li>
+        <li>Header - navigation links (Search, Watchlist).</li>
+        <li>SearchPage - handles movie search and displays results.</li>
+        <li>MovieCard - reusable component for displaying movie info.</li>
+        <li>WatchlistPage - shows saved movies from localStorage.</li>
+      </ul>
+      <h3 class="left-border">Hints</h3>
+      <p></p>
+      <h4>Search Page (/)</h4>
+      <ul>
+        <li>Think about how to track the search text and store fetched movies - consider using useState.</li>
+        <li>The API returns movie data; update your state with the search results and render a list of MovieCard components.</li>
+        <li>Pass movie data via props to MovieCard.</li>
+        <li>You may find it helpful to organize your API logic in a small helper function.</li>
+      </ul>
+      <h4>Watchlist Page (/watchlist)</h4>
+      <ul>
+        <li>The watchlist should be loaded from localStorage when the page is opened.</li>
+        <li>Consider using useEffect to run that logic only once when the component mounts.</li>
+        <li>Use useState to manage the list of saved movies.</li>
+        <li>Think about how to keep your component updated when a movie is removed.</li>
+      </ul>
+      <h4>Routing</h4>
+      <ul>
+        <li>Use React Router for navigation between / and /watchlist.</li>
+        <li>The links in Header should update the view without reloading the page.</li>
+        <li>Use Routes and Route inside App.js to define your pages.</li>
+      </ul>
+      <h4>Data Persistence</h4>
+      <ul>
+        <li>Store the watchlist as a JSON array in localStorage.</li>
+        <li>When a user adds or removes a movie, make sure to update both your React state and the stored data.</li>
+      </ul>
+      <h4>Layout</h4>
+      <p></p><li>The focus of this exercise is to learn React. Use the style from exercise 6 as much as possible.</li><p></p>
+    </section>
+	<section>
+    <h3>Style (10 points)</h3>
+    <p>
+      There are well-established style guidelines and best practices for React code that help keep your code 
+      clean, readable, maintainable, and consistent. 
+      Below are few guidelines that are widely followed. Please follow them.
+    </p>
+    <ul>
+      <li>Use <strong>PascalCase</strong> for all component file names and exported 
+        function names (e.g., <code>MyComponent.jsx</code>, <code>function MyComponent()</code>).</li>
+      <li>Destructure props in the component function signature for clarity (e.g., <code>function Greeting({ name })</code>).</li>
+      <li>Choose clear and meaningful names for state variables and their setters 
+        (e.g., <code>const [count, setCount] = useState(0);</code>).</li>
+      <li>Only call <code>useState</code> and <code>useEffect</code> at the top level in a component — 
+        not inside loops, conditions, or nested functions.</li>
+      <li>Always specify a dependency array when using <code>useEffect</code> (e.g., <code>useEffect(() =&gt; { ... }, [count]);</code>).</li>
+      <li>Use <strong>PascalCase</strong> for route component names and keep your  <code>Routes</code> definitions
+         clean and readable (e.g., <code>&lt;Route path="/about" element=&lt;About /&gt; /&gt;</code>).</li>
+      <li>Keep one component per file if possible.</li>
+      <li>Define event handler functions outside of JSX and above the return statement.</li>
+      <li>Leave a blank line between functions and before return blocks for readability.</li>
+      <li>Export your main component at the end of the file (e.g., <code>export default MyComponent;</code>).</li>
+      <li>Keep your code neat, readable, and organized — consistency is key.</li>
+</ul>
+
+	</section>
+    <section>
+      <h3 class="left-border">Submission Procedure</h3>
+      <p>Create a folder with your netid as the name. Copy the contents 
+of the React project folder to this folder. Remove the 'node-modules' 
+folder and any other folder your IDE may have created. The 
+'node-modules' folder is really large, and we don't want to 
+upload/download it when we can recreate. The submission folder should be
+ clean and should not contain any unwanted files. Zip the folder and 
+submit it on elearning. Failing to follow the submission procedure will 
+result in loss of entire styling points.</p>
+    </section>
+  </main>
+</div>
+
+
+</body></html>

@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html><link type="text/css" id="dark-mode" rel="stylesheet" href=""><style type="text/css" id="dark-mode-custom-style"></style><head>
+  <meta http-equiv="content-type" content="text/html; charset=windows-1252">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Exercise 4: vDOM Diff</title>
+  <meta name="description" content="WPL">
+  <style data-tippy-stylesheet="">.tippy-tooltip[data-animation=fade][data-state=hidden]{opacity:0}.tippy-iOS{cursor:pointer!important;-webkit-tap-highlight-color:transparent}.tippy-popper{pointer-events:none;max-width:calc(100vw - 10px);transition-timing-function:cubic-bezier(.165,.84,.44,1);transition-property:transform}.tippy-tooltip{position:relative;color:#fff;border-radius:4px;font-size:14px;line-height:1.4;background-color:#333;transition-property:visibility,opacity,transform;outline:0}.tippy-tooltip[data-placement^=top]>.tippy-arrow{border-width:8px 8px 0;border-top-color:#333;margin:0 3px;transform-origin:50% 0;bottom:-7px}.tippy-tooltip[data-placement^=bottom]>.tippy-arrow{border-width:0 8px 8px;border-bottom-color:#333;margin:0 3px;transform-origin:50% 7px;top:-7px}.tippy-tooltip[data-placement^=left]>.tippy-arrow{border-width:8px 0 8px 8px;border-left-color:#333;margin:3px 0;transform-origin:0 50%;right:-7px}.tippy-tooltip[data-placement^=right]>.tippy-arrow{border-width:8px 8px 8px 0;border-right-color:#333;margin:3px 0;transform-origin:7px 50%;left:-7px}.tippy-tooltip[data-interactive][data-state=visible]{pointer-events:auto}.tippy-tooltip[data-inertia][data-state=visible]{transition-timing-function:cubic-bezier(.54,1.5,.38,1.11)}.tippy-arrow{position:absolute;border-color:transparent;border-style:solid}.tippy-content{padding:5px 9px}</style><link rel="stylesheet" href="Exercise%204_%20vDOM%20Diff_files/e4.css">
+</head>
+
+<body>
+  <!-- Course Info Section -->
+  <section id="course-info">
+    <h1>CS 6314: Web Programming Languages</h1>
+    <!-- <p>Instructor: Dr. Alagar</p> -->
+    <p>Fall 2025</p>
+  </section>
+
+  <!-- Assignment Header -->
+  <div class="container">
+    <header>
+      <h2>Exercise 4: Simplified Virtual DOM Diff Algorithm</h2>
+      <p><strong>Due Date:</strong> Tuesday Sep 23, 2025 11:59 PM</p>
+    </header>
+    <main>
+
+      <section>
+        <h3 class="left-border">Motivation</h3>
+        <p>Modern UI frameworks like <a href="https://react.dev/learn" target="_blank"><strong>React</strong></a>
+          maintain a virtual DOM (vDOM) in memory to efficiently update the real DOM. They render the initial vDOM to
+          real DOM elements and then use a diff algorithm to perform minimal updates. In this exercise, you will
+          implement a simplified <code>diff()</code> function to gain hands-on experience with this process.</p>
+      </section>
+
+      <section>
+        <h3 class="left-border">Setup</h3>
+        <p>You can download the starter files by clicking <a href="https://personal.utdallas.edu/~sxa173731/wpl/e4/assets/e4_starter.zip">this link</a>. The starter
+          files are:</p>
+        <ul>
+          <li><code>index.html</code> — entry page that loads the demo and includes an "Update DOM" button.</li>
+          <li><code>vdoms.js</code> — contains three test case pairs (<code>before</code> and <code>after</code> virtual
+            DOMs), with <code>class: "updated"</code> on changed nodes.</li>
+          <li><code>index.css</code> — common CSS including the <code>.updated</code> class.</li>
+          <li><code>diff.js</code> — Contains <code>createTree()</code> to create the initial DOM and
+            <code>diff()</code>.
+          </li>
+        </ul>
+      </section>
+
+      <section>
+        <h3 class="left-border">Virtual DOM Node Format</h3>
+        <div class="code">
+          <pre>        {
+          type: "tagName",
+          props: { attrName: "value", ... },
+          children: [ /* child vnodes or strings for text */ ]
+        }
+      </pre>
+        </div>
+        <p>Text nodes are strings. Element nodes have type, props, and children arrays.
+          VDOM specifies the entire document tree starting from the root node. Assume that each VDOM has a single root <code>div</code> node. 
+        </p>
+      </section>
+
+      <section>
+        <h3 class="left-border">Requirements</h3>
+        <p></p>
+        <ul>
+          <li>Implement diff() to update the real DOM to match the <code>after</code> vDOM:
+            <ul>
+              <li>Replace nodes if types differ.</li>
+              <li>Update text content if changed.</li>
+              <li>Update attributes: add/update new, remove missing.</li>
+              <li>Recursively handle children, including added/removed nodes.</li>
+            </ul>
+          </li>
+          <li>Do not use any external frameworks or libraries.</li>
+          <li>The <code>.updated</code> class in the <code>after</code> vDOMs should appear when your diff
+            updates attributes. If the updates do not appear in red color, then your update is erroneous.</li>
+        </ul>
+      </section>
+
+      <section>
+        <h3 class="left-border">Hints</h3>
+        <p></p>
+        <ul>
+          <li>Understand the structure of VDOM definition very well. It is important to understand the input data, 
+            before you proceed with coding.</li>
+          <li>Understand the code for <code>createTree(vnode)</code>. Developer tool, especially debugger,
+             is your best friend. Use breakpoint and step through the code line by line.</li>
+          <li><code>createTree(vnode)</code> only creates the DOM tree. The tree is mounted in <code>index.html</code>
+          using <code>appendChild()</code></li>
+          <li>Several useful hints are provided in <code>diff()</code>. Read them carefully. 
+            Understand the DOM methods very well before using it.</li>
+          <li><code>diff()</code> is intially invoked in <code>index.html</code>. Check the arguments that are passed intially.</li>
+          <li>Test each test case individually by selecting <code>TEST_CASES[1]</code>, <code>[2]</code>, or
+            <code>[3]</code> in <code>index.html</code>.
+          </li>
+        </ul>
+      </section>
+
+      <section>
+        <h3 class="left-border">Submission Procedure</h3>
+        <p>Create a folder with your netid as the name. Place the files <code>diff.js</code>, <code>index.html</code>,
+          <code>index.css</code>, and <code>vdoms.js</code> in the folder. Zip the folder and submit it on elearning.
+          Note the folder should not contain any unrelated files, and name of the folder should be exactly as specified.
+          Failing to follow the submission procedure will result in loss of few points.
+        </p>
+      </section>
+    </main>
+  </div>
+
+
+</body></html>

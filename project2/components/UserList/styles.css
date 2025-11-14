@@ -1,0 +1,43 @@
+.side_users {
+    justify-content: space-between !important;
+}
+
+.side_users .cc:link {
+    color: white !important;
+    text-decoration: none;
+
+}
+
+.side_users .cc:link {
+    color: green;
+    background-color: transparent;
+    text-decoration: none;
+}
+
+.side_users .cc:visited {
+    color: pink;
+    background-color: transparent;
+    text-decoration: none;
+}
+
+.side_users .cc {
+    background-color: rgb(255, 130, 130);
+    border-radius: 50%;
+    padding: 6px;
+    color: white !important;
+    font-size: 0.7rem;
+    text-underline-offset: 0 !important;
+    width: 10px;
+    height: 10px;
+}
+
+.side_users .pp {
+    background-color: rgb(186, 246, 186);
+    border-radius: 50%;
+    padding: 6px;
+    color: white;
+    font-size: 0.7rem;
+    width: 10px;
+    height: 10px;
+
+}

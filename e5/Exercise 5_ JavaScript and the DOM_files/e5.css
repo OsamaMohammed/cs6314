@@ -1,0 +1,391 @@
+/* Global Styles */
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+    background-color: #f8f9fa;
+    color: #333;
+}
+
+/* Container for max-width and centering */
+.container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* Course Info Header */
+#course-info {
+    background-color: green;
+    color: white;
+    text-align: center;
+    padding: 30px 0;
+    margin: 0;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+#course-info h1 {
+    margin: 0;
+    font-size: 2.2rem;
+    font-weight: 700;
+    color: white;
+    letter-spacing: -0.5px;
+}
+
+#course-info p {
+    margin: 10px 0 0 0;
+    font-size: 1.1rem;
+    opacity: 0.9;
+    font-weight: 300;
+}
+
+/* Main Content Structure */
+main {
+    background: white;
+    margin: 0;
+    padding: 0;
+    min-height: calc(100vh - 200px);
+}
+
+/* Header section with assignment info */
+header {
+    background: #fff;
+    border-left: 4px solid green;
+    padding: 30px;
+    margin: 0 0 30px 0;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+header h2 {
+    color: green;
+    margin: 0 0 15px 0;
+    font-size: 2rem;
+    font-weight: 600;
+}
+
+header p {
+    margin: 0;
+    font-size: 1.1rem;
+    color: #6c757d;
+}
+
+/* Section styling */
+main section {
+    margin-bottom: 30px;
+    background: white;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+main section h3 {
+    background: #f8f9fa;
+    border-left: 4px solid green;
+    margin: 0;
+    padding: 20px 30px;
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: green;
+    border-bottom: 1px solid #e9ecef;
+}
+
+main section > p {
+    padding: 10px 30px;
+    margin: 0;
+    font-size: 1rem;
+    line-height: 1.6;
+}
+
+main section > ol,
+main section > ul {
+    padding: 0 30px 20px 30px;
+    margin: 0;
+}
+
+main section > *:last-child {
+    padding-bottom: 10px;
+}
+
+main section > div {
+    padding: 0 30px;
+    margin: 0;
+}
+
+main section > pre {
+    padding: 0 30px;
+    margin: 0;
+    background-color: #f8f9fa;
+    border: 1px solid #e9ecef;
+    border-radius: 4px;
+    font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+}
+
+/* Typography */
+h1, h2, h3, h4, h5, h6 {
+    color: #2c3e50;
+    font-weight: 600;
+    line-height: 1.3;
+}
+
+p {
+    margin-bottom: 16px;
+    font-size: 1rem;
+    line-height: 1.6;
+}
+
+/* Code styling */
+code {
+    background-color: #f8f9fa;
+    border: 1px solid #e9ecef;
+    border-radius: 4px;
+    padding: 2px 6px;
+    font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+    font-size: 0.9em;
+    color: #e83e8c;
+    font-weight: 600;
+}
+
+/* Clean list styling - no custom markers, use browser defaults */
+ol, ul {
+    margin: 0;
+    padding-left: 30px;
+}
+
+ol > li, ul > li {
+    margin-bottom: 8px;
+    line-height: 1.6;
+}
+
+/* Nested lists */
+ol ol, ol ul, ul ol, ul ul {
+    margin: 8px 0;
+    padding-left: 25px;
+}
+
+/* Text emphasis */
+strong {
+    color: green;
+    font-weight: 600;
+}
+
+b {
+    color: white;
+    font-weight: 600;
+}
+
+em {
+    color: #e83e8c;
+    font-style: normal;
+    font-weight: 500;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .container {
+        padding: 15px;
+    }
+
+    #course-info {
+        padding: 20px 0;
+    }
+
+    #course-info h1 {
+        font-size: 1.8rem;
+    }
+
+    header {
+        padding: 20px;
+        margin-bottom: 20px;
+    }
+
+    header h2 {
+        font-size: 1.6rem;
+    }
+
+    main section {
+        margin-bottom: 20px;
+    }
+
+    main section h3 {
+        padding: 15px 20px;
+        font-size: 1.3rem;
+    }
+
+    main section > p,
+    main section > ol,
+    main section > ul {
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+
+    main section > *:last-child {
+        padding-bottom: 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        padding: 10px;
+    }
+
+    #course-info h1 {
+        font-size: 1.5rem;
+    }
+
+    header h2 {
+        font-size: 1.4rem;
+    }
+
+    main section h3 {
+        font-size: 1.2rem;
+        padding: 12px 15px;
+    }
+
+    main section > p,
+    main section > ol,
+    main section > ul {
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+
+    main section > *:last-child {
+        padding-bottom: 15px;
+    }
+}
+
+/* Accessibility */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+
+/* Print styles */
+@media print {
+    body {
+        background: white;
+        color: black;
+    }
+
+    #course-info {
+        background: white;
+        color: black;
+        border-bottom: 2px solid #000;
+    }
+
+    main section {
+        box-shadow: none;
+        border: 1px solid #000;
+        page-break-inside: avoid;
+    }
+}
+
+/* Focus styles for accessibility */
+code:focus,
+strong:focus {
+    outline: 2px solid green;
+    outline-offset: 2px;
+}
+
+/* Subtle hover effects */
+main section:hover {
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    transition: box-shadow 0.3s ease;
+}
+
+/* Additional styles for E5.html classes */
+.navbar {
+    background-color: green;
+    padding: 15px 0;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.navbar-header {
+    margin: 0;
+}
+
+.navbar-brand {
+    color: white;
+    font-size: 1.8rem;
+    font-weight: 700;
+    margin: 0;
+    letter-spacing: -0.5px;
+}
+
+.text-muted {
+    color: #6c757d;
+}
+
+.left-border {
+    border-left: 4px solid green;
+    padding-left: 20px;
+}
+
+.center-block {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+
+.margin-v {
+    margin: 20px 0;
+}
+
+.img-responsive {
+    max-width: 80%;
+    height: auto;
+}
+
+.code {
+    background-color: #f8f9fa;
+    border: 1px solid #e9ecef;
+    border-radius: 4px;
+    padding: 15px;
+    margin: 15px 0;
+}
+
+.code pre {
+    margin: 0;
+    font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+    font-size: 0.9em;
+    color: #333;
+    background: none;
+    border: none;
+    padding: 0;
+}
+
+.text-center {
+    text-align: center;
+}
+
+footer {
+    background-color: #f8f9fa;
+    border-top: 1px solid #e9ecef;
+}
+
+footer small {
+    font-size: 0.875rem;
+    color: #6c757d;
+}
+
+footer a {
+    color: green;
+    text-decoration: none;
+}
+
+footer a:hover {
+    text-decoration: underline;
+}
+
+.left-padding {
+    padding-left: 20px;
+}

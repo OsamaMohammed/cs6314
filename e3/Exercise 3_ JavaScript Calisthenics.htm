@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html><link type="text/css" id="dark-mode" rel="stylesheet" href=""><style type="text/css" id="dark-mode-custom-style"></style><head>
+  <meta http-equiv="content-type" content="text/html; charset=windows-1252">
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width initial-scale=1">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+      <title>Exercise 3: JavaScript Calisthenics</title>
+      <meta name="description" content="WPL">
+
+      <style data-tippy-stylesheet="">.tippy-tooltip[data-animation=fade][data-state=hidden]{opacity:0}.tippy-iOS{cursor:pointer!important;-webkit-tap-highlight-color:transparent}.tippy-popper{pointer-events:none;max-width:calc(100vw - 10px);transition-timing-function:cubic-bezier(.165,.84,.44,1);transition-property:transform}.tippy-tooltip{position:relative;color:#fff;border-radius:4px;font-size:14px;line-height:1.4;background-color:#333;transition-property:visibility,opacity,transform;outline:0}.tippy-tooltip[data-placement^=top]>.tippy-arrow{border-width:8px 8px 0;border-top-color:#333;margin:0 3px;transform-origin:50% 0;bottom:-7px}.tippy-tooltip[data-placement^=bottom]>.tippy-arrow{border-width:0 8px 8px;border-bottom-color:#333;margin:0 3px;transform-origin:50% 7px;top:-7px}.tippy-tooltip[data-placement^=left]>.tippy-arrow{border-width:8px 0 8px 8px;border-left-color:#333;margin:3px 0;transform-origin:0 50%;right:-7px}.tippy-tooltip[data-placement^=right]>.tippy-arrow{border-width:8px 8px 8px 0;border-right-color:#333;margin:3px 0;transform-origin:7px 50%;left:-7px}.tippy-tooltip[data-interactive][data-state=visible]{pointer-events:auto}.tippy-tooltip[data-inertia][data-state=visible]{transition-timing-function:cubic-bezier(.54,1.5,.38,1.11)}.tippy-arrow{position:absolute;border-color:transparent;border-style:solid}.tippy-content{padding:5px 9px}</style><link rel="stylesheet" href="Exercise%203_%20JavaScript%20Calisthenics_files/e3.css">
+      <!-- <script src="assets/e3.js"></script> -->
+  </head>
+
+
+  <body>
+  <!-- Course Info Section -->
+  <section id="course-info">
+    <h1>CS 6314: Web Programming Languages</h1>
+    <!-- <p>Instructor: Dr. Alagar</p> -->
+    <p>Fall 2025</p>
+  </section>
+
+  <!-- Assignment Header -->
+  <div class="container">
+    <header>
+      <h2>Exercise 3: JavaScript Calisthenics</h2>
+      <p><strong>Due Date:</strong> Tuesday Sep 16, 2025 11:59 PM</p>
+    </header>
+
+  <main>
+
+  <section>
+    <!-- <h3 class="left-border">JavaScript Calisthenics</h3> -->
+    <p><strong>Instructions:</strong></p>
+    
+      <ul>
+          <li>Solve all problems using modern JavaScript syntax.</li>
+          <li>Test your solutions in the browser console or Node.js.</li>
+          <li> <a href="https://personal.utdallas.edu/~sxa173731/wpl/e3/e3.zip" download="e3.zip">Click here</a> to download the starter code.</li>
+          <!-- <li><strong>JavaScript Starter File:</strong> <a href="assets/e3.js" download="e3.js">Download e3.js</a> - Click to download the starter file with TODO functions and test cases</li> -->
+      </ul>
+    <p>
+      The starter code includes functions annotated with JSDoc-style comments that you are required to implement. 
+          Additionally, this code provides helpful hints and sample test cases.
+    </p>
+  </section>
+
+  <section>
+    <h3 class="left-border">Part 1:  Arrays &amp; String Manipulation (14 points)</h3>
+
+    <h4 class="left-padding">Problem 1: Generate IDs for Web Elements</h4>
+    <p>A webpage has section titles written as plain text. Write a function
+       to convert section titles into lowercase IDs with hyphenated words.</p>
+
+    <div class="code">
+    <pre>      function generateIds(titles) {
+          // Your code here
+      }
+      console.log(generateIds(["About Us", "Our Projects", "Contact Info"]));
+      // Output: ["about-us", "our-projects", "contact-info"]
+    </pre>
+    </div>
+
+    <h4 class="left-padding">Problem 2: Highlight Important Sections</h4>
+    <p>Write a function to filter only titles containing "Important" and convert them to IDs as before.</p>
+    <div class="code">
+    <pre>      function highlightImportant(titles) {
+          // Your code here
+      }
+      console.log(highlightImportant([
+        "About Us",
+        "Important Notice",
+        "Our Projects",
+        "Very Important Update"
+      ]));
+      // Output: ["important-notice", "very-important-update"]
+    </pre>
+    </div>
+
+    <h4 class="left-padding">Problem 3: Word Frequency in Section Titles</h4>
+    <p>Write a function to count frequency of each word in an array of titles.</p>
+    <div class="code">
+      <pre>        function wordFrequency(titles) {
+            // Your code here
+        }
+        console.log(wordFrequency([
+          "About Us",
+          "Our Projects",
+          "Important Projects",
+          "Contact Us"
+        ]));
+        // Output: { about: 1, us: 2, our: 1, projects: 2, important: 1, contact: 1 }
+      </pre>
+    </div>
+  </section>
+
+  <section>
+    <h3 class="left-border">Part 2: Arrow Functions &amp; Callbacks (12 points)</h3>
+    <h4 class="left-padding">Problem 4: Delayed Message</h4>
+    <p>Write a function to print the given message after a delay.</p>
+
+    <div class="code">
+      <pre>        function delayedMessage(message, delay) {
+            // Your code here
+        }
+        delayedMessage("Welcome to our site!", 2000);
+        //Output (after ~2000 msec): "Welcome to our site!"
+      </pre>
+    </div>
+
+    <h4 class="left-padding">Problem 5: Custom Message Formatter</h4>
+    <p>Write a function to format the message using the given callback and then print.</p>
+    <div class="code">
+      <pre>        function showFormattedMessage(message, formatter) {
+            // Your code here
+        }
+        showFormattedMessage("hello world", msg =&gt; msg.toUpperCase());
+        // Output: HELLO WORLD
+        showFormattedMessage("new user joined", msg =&gt; "# " + msg + " #");
+        // Output: # new user joined #
+      </pre>
+    </div>
+
+    <h4 class="left-padding">Problem 6: Format Navigation Menu</h4>
+    <p>Write a function to format each item and return them in an array.</p><p>
+    </p><div class="code">
+      <pre>        function formatMenu(items, formatter) {
+            // Your code here
+        }
+        const menu = ["Home", "About", "Contact"];
+        console.log(formatMenu(menu, item =&gt; item.toUpperCase()));
+        // Output: ["HOME", "ABOUT", "CONTACT"]
+      </pre>
+    </div>
+  </section>
+
+  <section>
+    <h3 class="left-border">Part 3: Objects, Spread &amp; Rest (14 points)</h3>
+    <h4 class="left-padding">Problem 7: Update User Profile</h4>
+    <p>Write a function to update a user profile with new values.</p>
+    <div class="code">
+      <pre>      function updateUser(user, updates) {
+          // Your code here
+      }
+      const user = { name: "Maya", age: 25, city: "Boston" };
+      const updates = { age: 26, city: "New York" };
+      console.log(updateUser(user, updates));
+      // Output: { name: "Maya", age: 26, city: "New York" }
+      </pre>
+    </div>
+
+    <h4 class="left-padding">Problem 8: Remove Sensitive Data</h4>
+    <p>Write a function to remove sensitive inforamtion from a user object.</p>
+    <div class="code">
+      <pre>      function removeSensitive(user) {
+          // Your code here
+          return rest;
+      }
+      const user2 = { name: "Maya", age: 26, password: "secret123" };
+      console.log(removeSensitive(user2));
+      // Output: { name: "Maya", age: 26 }
+      </pre>
+    </div>
+
+    <h4 class="left-padding">Problem 9: Merge Multiple User Profiles</h4>
+    <p>Write a function to combine any number of user profile objects into one
+       with later objects overriding the earlier objects. </p>
+    <div class="code">
+      <pre>        function mergeProfiles(...profiles) {
+            // Your code here
+        }
+        console.log(mergeProfiles(
+          { name: "Maya", age: 25 },
+          { age: 26 },
+          { city: "NY" }
+        ));
+        // Output: { name: "Maya", age: 26, city: "NY" }
+      </pre>
+    </div>
+  </section>
+
+  <section>
+    <h3 class="left-border">Problem 10: Build a Mini Navigation System (10 points)</h3>
+    <p>Imagine a webpage with multiple sections. Each section has a title, a priority level, 
+		and optional CSS classes. 
+    	Write a function to generate a formatted navigation menu for sections with 
+		a priority level greater than or equal to 2. 
+    	id is generated from title like before. lable is the formatted title. classes are unchanged.</p>
+    <div class="code">
+    <pre>        function buildNavigation(sections, formatter) {
+            // Your code here
+        }
+        const sections = [
+          { title: "Home", priority: 1, classes: ["menu-item"] },
+          { title: "Important Updates", priority: 3, classes: ["menu-item", "highlight"] },
+          { title: "Contact", priority: 2, classes: ["menu-item"] }
+        ];
+        console.log(buildNavigation(sections, title =&gt; "# " + title.toUpperCase() + " #"));
+        //Output
+          [
+            { id: "important-updates", label: "# IMPORTANT UPDATES #", classes: ["menu-item", "highlight"] },
+            { id: "contact", label: "# CONTACT #", classes: ["menu-item"] }
+          ]
+    </pre>
+    </div>
+  </section>
+
+  <section id="hints">
+    <h3 class="left-border">Hints</h3>
+    <p></p>
+    <ul>
+        <li>Read the problem carefully and identify whether the input is an <strong>array</strong> or <strong>object</strong>.</li>
+        <li>Break the problem into smaller steps: filter, transform, or reduce.</li>
+        <li>Use <code>map</code> to transform arrays and <code>filter</code> to select elements.</li>
+        <li>Use <code>split</code> and <code>join</code> for converting strings into IDs.</li>
+        <li>For object merging, consider <code>{ ...obj1, ...obj2 }</code> or <code>Object.assign</code>.</li>
+        <li>Arrow functions are concise callbacks for <code>map</code>, <code>filter</code>, or <code>setTimeout</code>.</li>
+        <li>Rest properties (destructuring with rest) allow removing certain keys from objects.</li>
+        <li>Test each step separately in the console to make debugging easier.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h3 class="left-border">Submission Procedure</h3>
+    <p>
+      Create a folder with your netid as the name. Place the files <code>index.html</code>, and <code>e3.js</code> in the folder. Zip the folder and submit it on elearning. 
+      Note the folder should not contain any unrelated files, and name of the folder should be exactly as specified.
+      Failing to follow the submission procedure will result in loss of few points.
+    </p>
+  </section>
+
+  </main>
+  </div>
+
+
+</body></html>

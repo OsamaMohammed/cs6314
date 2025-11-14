@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html><link type="text/css" id="dark-mode" rel="stylesheet" href=""><style type="text/css" id="dark-mode-custom-style"></style><head>
+<meta http-equiv="content-type" content="text/html; charset=windows-1252">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <title> Exercise 2: CSS</title>
+    <meta name="description" content="WPL">
+
+    <style data-tippy-stylesheet="">.tippy-tooltip[data-animation=fade][data-state=hidden]{opacity:0}.tippy-iOS{cursor:pointer!important;-webkit-tap-highlight-color:transparent}.tippy-popper{pointer-events:none;max-width:calc(100vw - 10px);transition-timing-function:cubic-bezier(.165,.84,.44,1);transition-property:transform}.tippy-tooltip{position:relative;color:#fff;border-radius:4px;font-size:14px;line-height:1.4;background-color:#333;transition-property:visibility,opacity,transform;outline:0}.tippy-tooltip[data-placement^=top]>.tippy-arrow{border-width:8px 8px 0;border-top-color:#333;margin:0 3px;transform-origin:50% 0;bottom:-7px}.tippy-tooltip[data-placement^=bottom]>.tippy-arrow{border-width:0 8px 8px;border-bottom-color:#333;margin:0 3px;transform-origin:50% 7px;top:-7px}.tippy-tooltip[data-placement^=left]>.tippy-arrow{border-width:8px 0 8px 8px;border-left-color:#333;margin:3px 0;transform-origin:0 50%;right:-7px}.tippy-tooltip[data-placement^=right]>.tippy-arrow{border-width:8px 8px 8px 0;border-right-color:#333;margin:3px 0;transform-origin:7px 50%;left:-7px}.tippy-tooltip[data-interactive][data-state=visible]{pointer-events:auto}.tippy-tooltip[data-inertia][data-state=visible]{transition-timing-function:cubic-bezier(.54,1.5,.38,1.11)}.tippy-arrow{position:absolute;border-color:transparent;border-style:solid}.tippy-content{padding:5px 9px}</style><link rel="stylesheet" href="Exercise%202_%20CSS_files/E2.css"></head>
+
+
+  <body>
+  <!-- Course Info Section -->
+  <section id="course-info">
+    <h1>CS 6314: Web Programming Languages</h1>
+    <!-- <p>Instructor: Dr. Alagar</p> -->
+    <p>Fall 2025</p>
+  </section>
+
+  <!-- Assignment Header -->
+  <div class="container">
+    <header>
+      <h2>Exercise 2: CSS</h2>
+      <p><strong>Due Date:</strong> Monday Sep 8, 2025 11:59 PM</p>
+    </header>
+
+    <main>
+
+  <section>
+    <h3 class="left-border">Problem 1 (20 points)</h3>
+
+    <p>
+      Create a <em>single</em> HTML document that presents two different
+      appearances, determined by the document's CSS stylesheet. Your HTML file
+      should be called <code>index.html</code> and the document's title should
+      be "Exercise 2". Along with this HTML document, you should also
+      create two stylesheets called <code>styleA.css</code>
+      and <code>styleB.css</code>.
+    </p>
+    <p>
+      If the HTML file links to <code>styleA.css</code>, then it should appear
+      like this ("Version A"):
+    </p>
+    <div class="center-block margin-v">
+      <img class="img-responsive" src="Exercise%202_%20CSS_files/project1versionA.png" alt="Problem
+      1 Version A">
+    </div>
+    <p>
+      If the HTML file links to <code>styleB.css</code>, then it should appear
+      like this ("Version B"):
+    </p>
+    <p>
+      <strong>Note: The D in the screenshot is highlighted to show you what
+      space the text should occupy. Your solution should not style the D with a
+      blue background.</strong>
+    </p>
+    <div class="center-block margin-v">
+      <img class="img-responsive" src="Exercise%202_%20CSS_files/project1versionB.png" alt="Problem
+      1 Version B">
+    </div>
+
+    <h4 class="left-padding">Style A Specifications</h4>
+    <ul>
+      <li>There should be six box elements, lined up vertically.</li>
+      <li>All boxes are centered horizontally and equally spaced vertically.
+      When the browser window is resized, the spacing between the boxes should
+      change (they should be equally spaced vertically across the page).
+      However, the boxes themselves should never overlap or change size.</li>
+      <li>Each box is 100x100 pixels, with a 1px line (color: #687291) on top.
+      Text is centered horizontally.</li>
+      <li>Boxes alternate colors (colors: #dfe1e7, #eeeff2).</li>
+      <li>The final element (color: #687291) has a 4px, black border and the
+      text is centered vertically.</li>
+      <li>The font in all elements is Tahoma, 40 pixels.</li>
+    </ul>
+
+    <h4 class="left-padding">Style B Specifications</h4>
+    <ul>
+      <li>Five box elements, lined up horizontally in the top left corner.</li>
+      <li>Boxes do not wrap with window resizing (i.e., boxes A through E should
+      stay on the same line even if your browser window is too small to display
+      them all).</li>
+      <li>The last box is positioned in the bottom right corner of the window
+      and stays there even when the window resizes.</li>
+      <li>Each box is 100x150 pixels (color: #eeeff2), with a 10px dotted line
+      (color: #D0D0FF) on the left. Boxes are separated by 10 pixels of
+      space.</li>
+      <li>When hovering over a box, the cursor changes to a hand and the box and
+      font colors change (colors: yellow, goldenrod, respectively).</li>
+      <li>The font in all elements is Tahoma, 40 pixels.</li>
+      <li>There are 10 pixels of space between the letters and the edge of the
+      box.</li>
+    </ul>
+    <p>
+      If a property is not outlined in these specifications (e.g., space between
+      elements in style B and edge of window) you should choose something
+      reasonable.
+    </p>
+  </section>
+
+
+  <section>
+    <h3 class="left-border">Problem 2 (5 points)</h3>
+    <p>
+      Create a third stylesheet <code>styleC.css</code> that utilizes 2 of the
+      following:
+    </p><ul>
+      <li>gradients</li>
+      <li>transitions</li>
+      <li>animations</li>
+      <li>web fonts</li>
+      <li>shadows</li>
+    </ul>
+  </section>
+  <section>
+    <h3 class="left-border">Problem 3 (20 points)</h3>
+    <p>
+      Make your <code>portfolio.html</code> visually appealing!
+	  Remember to use at least one Flexbox layout and one Grid layout in your CSS to meet the assignment requirements.
+      Name the style sheet <code>portfolio.css</code>. 
+    </p>
+  </section>
+
+  <section>
+    <h3 class="left-border">Style Points (5 points)</h3>
+    <p>
+      Your HTML file must be a valid HTML document that passes validation
+      at <a href="http://validator.w3.org/#validate_by_input+with_options">http://validator.w3.org</a>.
+      In addition, your HTML and CSS must be clean, readable, properly indented,
+      and well-structured with comments.
+    </p>
+  </section>
+  <section>
+    <h3 class="left-border">Resources</h3>
+    <p></p>
+    <ul>
+      <li>
+        Use the Firefox browser for this project, and for all projects in this
+        class. This will eliminate browser compatibility issues.
+      </li>
+      <li>
+        You may <strong>not</strong> use any JavaScript or external
+        libraries/stylesheets. You must write your own code.
+      </li>
+    </ul>
+  </section>
+
+  <section id="hints">
+    <h3 class="left-border">Hints</h3>
+    <p></p>
+    <ul>
+      <li>
+        You may find some of the following CSS style attributes useful for this
+        project (Check MDN CSS reference for details): 
+<div class="code">
+<pre>display: inline-block;
+height: 100%;
+white-space: nowrap;
+position: absolute;
+</pre>
+        </div>
+      </li>
+      <li>
+        You will need to use the <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Flexible_Box_Layout">CSS
+        Flexbox layout</a> for at least one portion of the assignment.
+      </li>
+    </ul>
+  </section>
+
+  <section>
+    <h3 class="left-border">Submission Procedure</h3>
+    <p>
+      
+      Create a folder with your netid as the name. Place all of the files needed for Problems 1 and 2, including
+      <code>index.html</code>, <code>styleA.css</code>, <code>styleB.css</code>,
+      <code>styleC.css</code>, <code>portfolio.html</code>, and <code>portfolio.css</code> in the folder. Zip the folder and submit it on elearning. 
+      Note the folder should not contain any unrelated files, and name of the folder should be exactly as should as specified.
+      Failing to follow the submission procedure will result in loss of 5 points.
+    </p>
+  </section>
+
+    </main>
+  </div>
+
+    
+
+    <footer>
+  <div class="container text-center">
+    <small class="text-muted">
+    	Modified version of a project from <a href="https://web.stanford.edu/class/cs142/website.html"><strong>CS142 - Stanford</strong></a>
+    </small>
+  </div>
+</footer>
+
+
+</body></html>

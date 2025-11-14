@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Exercise 6: Movie Search App</title>
+    <meta name="description" content="WPL">
+    <link rel="stylesheet" href="E6.css"></head>
+
+<body>
+<!-- Course Info Section -->
+<section id="course-info">
+  <h1>Exercise 6: Movie Search App</h1>
+  <p><b>Due Date:</b> Tuesday Oct 7, 2025 11:59 PM</p>
+</section>
+
+<!-- Assignment Header -->
+<div class="container">
+  <main>
+	<section>
+	<h3 class="left-border">Objective</h3>
+	<p>The main objective of this exercise is to apply the concepts (API, and localStorage) that you learnt in the class this week to build a simple web app. This exercise will also solidfy your skills in event handling and DOM manipulations.</p>
+	<p>Specifically, build a web app where users can search for movies using the OMDb API and save favorites to a watchlist stored in localStorage. The watchlist should be viewable on a separate page. Users of the app should be able to navigate between the two pages.</p>
+	</section>
+
+	<section>
+	<h3 class="left-border">Requirements</h3>
+  <p></p>
+	<h4>1. Search Page (index.html)</h4>
+	<ul>
+		<li>Input box to enter the title of the movie and Search button.</li>
+		<li>Fetch movies from the OMDb API. To learn more about the usage of the API See <a href="https://www.omdbapi.com/" target="_blank">OMDb API page</a></li>
+		<li>Display the results as movie cards containing the following information, along with at least two additional details of your choice about each movie.
+		<ul>
+			<li>Poster image</li>
+			<li>Title</li>
+			<li>Add to Watchlist button</li>
+			<li>Few additional properties from the json that will be useful to the users.</li>
+		</ul>
+		</li>
+		<li>Should be able to navigate to watchlist page from this page.</li>
+	</ul>
+	<h4>2. Watchlist Page (watchlist.html)</h4>
+	<ul>
+		<li>Show all saved movies from localStorage.</li>
+		<li>Each movie should display the same card layout.</li>
+		<li>Each card should have a Remove button to delete it from the watchlist.</li>
+		<li>Should be able to go back to the search page.</li>
+	</ul>
+	<h4>3. Watchlist Functionality</h4>
+	<ul>
+		<li>When Add to Watchlist is clicked:
+		<ul>
+			<li>Save the movie (id, title poster, etc.) in localStorage.</li>
+			<li>Do not allow duplicates.</li>
+		</ul>
+		</li>
+		<li>When Remove is clicked:
+		<ul>
+			<li>Remove that movie from localStorage.</li>
+		</ul>
+		</li>
+		<li>The data must persist after a page refresh.</li>
+	</ul>
+	<h4>4. Layout and Styling</h4>
+	<p>
+		We have provided starter files with minimal layout and styling. You are not required to use this styling. 
+		Feel free to change the styling or use your own. If you change or use your own styling, 
+		ensure that the styling is at least as good as the one that is provided. 
+		You can download the starter files <a href="e6_starter.zip">here.</a>
+		You need to create <code>watchlist.html</code>.
+	</p>
+	</section>
+
+	<section>
+	<h3 class="left-border">Submission Procedure</h3>
+	<p>Create a folder with your netid as the name. 
+		Place the files <code>index.html</code>, <code>watchlist.html</code>, <code>index.css</code>,
+		and <code>index.js</code> in the folder. Zip the folder and submit it on elearning. 
+		Note that the folder should not contain any unrelated files, and the name of the folder should be exactly as specified. 
+		Follow the submission procedure carefully, otherwise points will be deducted.</p>
+	</section>
+
+  </main>
+</div>
+
+<footer>
+<div class="container text-center">
+  <small class="text-muted">
+	CS 6314: Web Programming Languages
+  	<br>
+  	Fall 2025
+  </small>
+</div>
+</footer>
+
+</body></html>
