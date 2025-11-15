@@ -1,8 +1,11 @@
 import mongoose from "mongoose";
 import bluebird from "bluebird";
 import express from "express";
+import session from "express-session";
+import bodyParser from "body-parser";
 import { fileURLToPath } from "url";
 import { dirname, join } from "path";
+import multer from "multer";
 
 import User from "./schema/user.js";
 import Photo from "./schema/photo.js";
@@ -27,6 +30,16 @@ app.use((req, res, next) => {
   return next();
 });
 
+app.use(bodyParser.json()); // <-- Parse JSON request bodies
+
+app.use(
+  session({
+    secret: "photoapp",
+    resave: false,
+    saveUninitialized: false,
+  })
+);
+
 mongoose.Promise = bluebird;
 mongoose.set("strictQuery", false);
 mongoose.connect("mongodb://127.0.0.1/project3", {
@@ -35,6 +48,73 @@ mongoose.connect("mongodb://127.0.0.1/project3", {
 });
 
 const isValidId = (id) => mongoose.Types.ObjectId.isValid(id);
+
+// --- LOGIN ROUTE ---
+app.post("/admin/login", async (req, res) => {
+  const { login_name, password } = req.body;
+
+  if (!login_name || !password) {
+    return res.status(400).send("Missing login_name or password");
+  }
+
+  try {
+    const user = await User.findOne({ login_name });
+    if (!user) {
+      return res.status(400).send("Invalid login_name");
+    }
+
+    if (user.password !== password) {
+      return res.status(400).send("Incorrect password");
+    }
+
+    // Store user info in session
+    req.session.user_id = user._id;
+    req.session.login_name = user.login_name;
+
+    // Return only necessary user info
+    return res.status(200).send({
+      _id: user._id,
+      first_name: user.first_name,
+      last_name: user.last_name,
+      login_name: user.login_name,
+    });
+  } catch (e) {
+    return res.status(500).type("text/plain").send(e.toString());
+  }
+});
+
+app.post("/admin/logout", (req, res) => {
+  if (!req.session.user_id) {
+    return res.status(400).send("No session");
+  }
+
+  req.session.destroy((err) => {
+    if (err) {
+      return res.status(500).send("Error logging out");
+    }
+    return res.status(200).send("Logout successful");
+  });
+  return res.status(200).send("Logout successful");
+});
+
+// All routes below this require a logged-in user
+app.use((req, res, next) => {
+  if (
+    req.path === "/user" ||
+    req.path === "/admin/login" ||
+    req.path === "/admin/logout" ||
+    req.path.startsWith("/test")
+  ) {
+    return next();
+  }
+
+  if (!req.session.user_id) {
+    return res.status(401).send("Unauthorized.");
+  }
+
+  return next();
+
+});
 
 app.get("/", (_req, res) => {
   res.send("Simple web server of files from " + __dirname);
@@ -61,6 +141,54 @@ app.get("/test/counts", async (_req, res) => {
     return res.status(500).type("text/plain").send(e.toString());
   }
 });
+
+app.post("/user", async (req, res) => {
+  const {
+    login_name,
+    password,
+    first_name,
+    last_name,
+    location,
+    description,
+    occupation,
+  } = req.body;
+
+  if (!login_name || !password || !first_name || !last_name) {
+    return res
+      .status(400)
+      .send("login_name, password, first_name, and last_name are required.");
+  }
+
+  try {
+    const existingUser = await User.findOne({ login_name });
+    if (existingUser) {
+      return res.status(400).send("That login_name is already taken.");
+    }
+
+    const newUser = new User({
+      login_name,
+      password,
+      first_name,
+      last_name,
+      location: location || "",
+      description: description || "",
+      occupation: occupation || "",
+    });
+
+    await newUser.save();
+
+    return res.status(200).send({
+      _id: newUser._id,
+      login_name: newUser.login_name,
+      first_name: newUser.first_name,
+      last_name: newUser.last_name,
+    });
+  } catch (e) {
+    console.error("Error registering user:", e);
+    return res.status(500).type("text/plain").send(e.toString());
+  }
+});
+
 
 app.get("/user/list", async (_req, res) => {
   try {
@@ -144,6 +272,86 @@ app.get("/photosOfUser/:id", async (req, res) => {
     return res.status(200).send(apiPhotos);
   } catch (e) {
     return res.status(500).type("text/plain").send(e.toString());
+  }
+
+});
+
+// --- ADD COMMENT TO PHOTO ROUTE ---
+app.post("/commentsOfPhoto/:photo_id", async (req, res) => {
+  const { photo_id } = req.params;
+  const { comment } = req.body;
+
+  // Validate photo_id
+  if (!isValidId(photo_id)) {
+    return res.status(400).send("Invalid photo_id");
+  }
+
+  // Validate comment text
+  if (!comment || comment.trim().length === 0) {
+    return res.status(400).send("Comment cannot be empty");
+  }
+
+  try {
+    // Find the photo
+    const photo = await Photo.findById(photo_id);
+    if (!photo) {
+      return res.status(400).send("Photo not found");
+    }
+
+    // Create new comment object
+    const newComment = {
+      comment: comment.trim(),
+      user_id: req.session.user_id,
+      date_time: new Date(),
+    };
+
+    // Add comment to photo
+    photo.comments.push(newComment);
+    await photo.save();
+
+    return res.status(200).send({ newComment });
+  } catch (e) {
+    console.error("Error adding comment:", e);
+    return res.status(500).type("text/plain").send(e.toString());
+  }
+});
+
+// --- MULTER CONFIGURATION ---
+const storage = multer.diskStorage({
+  destination: function (req, file, cb) {
+    cb(null, "images/");
+  },
+  filename: function (req, file, cb) {
+    // const ext = path.extname(file.originalname);
+    // // get epoch timestamp
+    // const timestamp = Date.now();
+    // // generate a unique name with timestamp and extension
+    // const uniqueName = timestamp + "-" + randomInt(1000) + ext;
+    cb(null, file.originalname);
+  },
+});
+
+const upload = multer({ storage });
+
+app.post("/photos/new", upload.single("uploadedphoto"), async (req, res) => {
+  try {
+    if (!req.file) {
+      return res.status(400).send("No file uploaded");
+    }
+
+    const newPhoto = new Photo({
+      file_name: req.file.filename,
+      date_time: new Date(),
+      user_id: req.session.user_id,
+      comments: [],
+    });
+
+    await newPhoto.save();
+
+    return res.status(200).send(newPhoto);
+  } catch (err) {
+    console.error("Error uploading photo:", err);
+    return res.status(500).type("text/plain").send(err.toString());
   }
 });
 

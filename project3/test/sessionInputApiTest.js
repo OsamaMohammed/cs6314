@@ -56,11 +56,11 @@ describe("Photo App: Session and Input API Tests", function () {
       axios.get(makeFullUrl("/photosOfUser/1")).then(function () {
         assert.fail("Expected error not received");
       }).catch(function (error) {
-        assert.strictEqual( 
+        assert.strictEqual(
           error.response.status,
           401,
           "HTTP response status code 401"
-        ); 
+        );
         done();
       });
     });
@@ -121,7 +121,7 @@ describe("Photo App: Session and Input API Tests", function () {
           assert.fail("Unexpected error received");
         });
     });
-  
+
     it("can get user list when logged in", function (done) {
       axios.get(makeFullUrl("/user/list"), {
         headers: {
@@ -141,17 +141,17 @@ describe("Photo App: Session and Input API Tests", function () {
 
     it("can logout when logged in", function (done) {
 
-      axios.post(makeFullUrl("/admin/logout"),{},  {
-            headers: {
-              Cookie: sessionCookie // use the session cookie from the previous test
-            }
-        }).then(function (response) {
-          assert.strictEqual(
-            response.status,
-            200,
-            "HTTP response status code 200"
-         );
-         done();
+      axios.post(makeFullUrl("/admin/logout"), {}, {
+        headers: {
+          Cookie: sessionCookie // use the session cookie from the previous test
+        }
+      }).then(function (response) {
+        assert.strictEqual(
+          response.status,
+          200,
+          "HTTP response status code 200"
+        );
+        done();
       }).catch(function () {
         assert.fail("Unexpected error received");
       });
@@ -189,9 +189,9 @@ describe("Photo App: Session and Input API Tests", function () {
 
     it("can get tooks photos", function (done) {
       axios.get(makeFullUrl("/photosOfUser/" + user_id), {
-            headers: {
-              Cookie: sessionCookie // use the session cookie from the previous test
-            }
+        headers: {
+          Cookie: sessionCookie // use the session cookie from the previous test
+        }
       }).then(function (response) {
         assert.strictEqual(
           response.status,
@@ -220,19 +220,19 @@ describe("Photo App: Session and Input API Tests", function () {
             response.status,
             200,
             "HTTP response status code 200"
-          );  
+          );
           done();
         })
-        .catch(function () { 
+        .catch(function () {
           assert.fail("Unexpected error received");
         });
     });
 
     it("can get tooks photos again", function (done) {
       axios.get(makeFullUrl("/photosOfUser/" + user_id), {
-          headers: {
-            Cookie: sessionCookie // use the session cookie from the previous test
-          }
+        headers: {
+          Cookie: sessionCookie // use the session cookie from the previous test
+        }
       }).then(function (response) {
         assert.strictEqual(
           response.status,
@@ -305,11 +305,11 @@ describe("Photo App: Session and Input API Tests", function () {
         filename: uniquePhotoName,
         contentType: "image/jpg",
       });
-    
+
       axios.post(makeFullUrl("/photos/new"), form, {
         headers: {
           "Content-Type": `multipart/form-data; boundary=${form._boundary}`,
-          Cookie: sessionCookie 
+          Cookie: sessionCookie
         },
       }).then(function (response) {
         assert.strictEqual(
@@ -317,18 +317,20 @@ describe("Photo App: Session and Input API Tests", function () {
           200,
           "HTTP response status code 200"
         );
-        done(); 
+        done();
       }).catch(function () {
         assert.fail("Unexpected error received");
       });
     });
 
+    console.log("Looking for photoname: ", uniquePhotoName);
+
     it("can get the uploaded photo", function (done) {
       axios.get(makeFullUrl(`/photosOfUser/${user_id}`), {
-          headers: {
-            Cookie: sessionCookie 
-          }
-       }).then(function (response) {
+        headers: {
+          Cookie: sessionCookie
+        }
+      }).then(function (response) {
         assert.strictEqual(
           response.status,
           200,
@@ -346,7 +348,7 @@ describe("Photo App: Session and Input API Tests", function () {
 
   describe("register user - post to /user", function () {
     const newUniqueLoginName = "u" + String(new Date().valueOf());
-    
+
     it("can create a new user", function (done) {
 
       const params = {
@@ -360,25 +362,25 @@ describe("Photo App: Session and Input API Tests", function () {
       };
       axios
         .post(makeFullUrl("/user"), params)
-       .then(function (response) {
-         assert.strictEqual(response.status, 200, "HTTP response status code 200");
-         assert.strictEqual(
-          response.data.login_name,
-          params.login_name,
-          "Response body contains login_name"
-        );
-        assert.strictEqual(
-          response.data.email,
-          params.email,
-        "Response body contains email"
-      );
-      done();
-      })
-      .catch(function (error) {
-       done(error);
-      });
+        .then(function (response) {
+          assert.strictEqual(response.status, 200, "HTTP response status code 200");
+          assert.strictEqual(
+            response.data.login_name,
+            params.login_name,
+            "Response body contains login_name"
+          );
+          assert.strictEqual(
+            response.data.email,
+            params.email,
+            "Response body contains email"
+          );
+          done();
+        })
+        .catch(function (error) {
+          done(error);
+        });
     });
-      
+
 
     it("can reject a duplicate user", function (done) {
       const params = {
@@ -395,14 +397,14 @@ describe("Photo App: Session and Input API Tests", function () {
         .then(function () {
           assert.fail("Expected error not received");
         })
-       .catch(function (error) {
+        .catch(function (error) {
           assert.strictEqual(
             error.response.status,
             400,
             "HTTP response status code 400"
           );
           done();
-       });
+        });
     });
   });
 });

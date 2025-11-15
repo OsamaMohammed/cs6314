@@ -62,7 +62,7 @@ describe(" Photo App: Server API Tests", function () {
       };
 
       const request = http.request(options, function (response) {
-        response.on("data", function () {});
+        response.on("data", function () { });
 
         response.on("end", function () {
           assert.strictEqual(
@@ -149,9 +149,9 @@ describe(" Photo App: Server API Tests", function () {
           assert(
             user,
             "could not find user " +
-              realUser.first_name +
-              " " +
-              realUser.last_name
+            realUser.first_name +
+            " " +
+            realUser.last_name
           );
           assert.strictEqual(
             _.countBy(userList, "_id")[user._id],
@@ -216,9 +216,9 @@ describe(" Photo App: Server API Tests", function () {
           assert(
             user,
             "could not find user " +
-              realUser.first_name +
-              " " +
-              realUser.last_name
+            realUser.first_name +
+            " " +
+            realUser.last_name
           );
           let userInfo;
           const id = user._id;
@@ -271,7 +271,7 @@ describe(" Photo App: Server API Tests", function () {
           headers: { Cookie: authCookie },
         },
         function (response) {
-          response.on("data", function () {});
+          response.on("data", function () { });
           response.on("end", function () {
             assert.strictEqual(response.statusCode, 400);
             done();
@@ -329,9 +329,9 @@ describe(" Photo App: Server API Tests", function () {
           assert(
             user,
             "could not find user " +
-              realUser.first_name +
-              " " +
-              realUser.last_name
+            realUser.first_name +
+            " " +
+            realUser.last_name
           );
           let photos;
           const id = user._id;
@@ -423,7 +423,7 @@ describe(" Photo App: Server API Tests", function () {
                         extraProps3.length,
                         0,
                         "comment user object has extra properties: " +
-                          extraProps3
+                        extraProps3
                       );
                       assert.strictEqual(
                         comment.user.first_name,
@@ -458,7 +458,7 @@ describe(" Photo App: Server API Tests", function () {
           headers: { Cookie: authCookie },
         },
         function (response) {
-          response.on("data", function () {});
+          response.on("data", function () { });
           response.on("end", function () {
             assert.strictEqual(response.statusCode, 400);
             done();
